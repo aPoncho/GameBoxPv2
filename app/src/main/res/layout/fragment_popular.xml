@@ -1,0 +1,168 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="GameBoxP"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Populares de este mes"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Grid de juegos -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego1"
+            android:contentDescription="Juego 1"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego2"
+            android:contentDescription="Juego 2"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego3"
+            android:contentDescription="Juego 3"/>
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego4"
+            android:contentDescription="Juego 4"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego5"
+            android:contentDescription="Juego 5"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego6"
+            android:contentDescription="Juego 6"/>
+
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego7"
+            android:contentDescription="Juego 7"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego8"
+            android:contentDescription="Juego 8"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="185dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego9"
+            android:contentDescription="Juego 9"/>
+
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego10"
+            android:contentDescription="Juego 10"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego11"
+            android:contentDescription="Juego 11"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:contentDescription="Juego 12"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juego12" />
+
+    </GridLayout>
+
+</LinearLayout>

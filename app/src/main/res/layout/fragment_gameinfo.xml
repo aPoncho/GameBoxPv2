@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--EL TOOLS:CONTEXT ES PARA DESPUES, CUANDO USEMOS KOTILN CON ESTO-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    tools:context=".GameDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:id="@+id/game_banner_placeholder"
+            android:src="@drawable/top"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:background="#404552"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/game_poster_placeholder"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="16dp"
+            android:background="#5A606C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/juego9" />
+
+        <TextView
+            android:id="@+id/game_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/game_poster_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_banner_placeholder"
+            tools:text="Uma Musume Pretty Derby" />
+
+        <TextView
+            android:id="@+id/game_year_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/game_title"
+            app:layout_constraintTop_toBottomOf="@+id/game_title"
+            tools:text="2025 • DEVELOPED BY Cygames" />
+
+        <TextView
+            android:id="@+id/genre_text"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:text="Gacha"
+            android:textAllCaps="false"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/game_year_developer"
+            app:layout_constraintTop_toBottomOf="@+id/game_year_developer" />
+
+        <TextView
+            android:id="@+id/platform_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/genre_text"
+            app:layout_constraintStart_toEndOf="@+id/genre_text"
+            app:layout_constraintTop_toTopOf="@+id/genre_text"
+            tools:text="PC" />
+
+
+        <TextView
+            android:id="@+id/game_synopsis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="48dp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genre_text"
+            tools:text="
+¡Umamusume: Pretty Derby está listo para la carrera! Explora a los aprendices y seguidores destacados mientras navegas por la inmersiva simulación deportiva a través del exhaustivo sistema de entrenamiento y los gráficos 3D de vanguardia del juego.
+\n
+Introducción \n
+-- Umamusume. Nacieron para correr. Heredan nombres de otro mundo y se inspiran en sueños dramáticos y maravillosos. Ahora, corren hacia adelante. Ese es su destino. Nadie sabe cómo terminarán las carreras que les esperan. Aun así, siguen corriendo, con el..." />
+
+        <TextView
+            android:id="@+id/ratings_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="RATINGS"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_synopsis" />
+
+        <RatingBar
+            android:id="@+id/average_rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="#44A048"
+            android:rating="3.8"
+            app:layout_constraintStart_toStartOf="@+id/ratings_title"
+            app:layout_constraintTop_toBottomOf="@+id/ratings_title" />
+
+        <TextView
+            android:id="@+id/average_rating_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/average_rating_bar"
+            app:layout_constraintStart_toEndOf="@+id/average_rating_bar"
+            app:layout_constraintTop_toTopOf="@+id/average_rating_bar"
+            tools:text="3.8" />
+
+
+        <LinearLayout
+            android:id="@+id/user_review_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="#2C3440"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/average_rating_bar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡Ya reseñaste este juego!"
+                android:textColor="@android:color/white" />
+
+            <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="#FFB500"
+                android:rating="5" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
