@@ -30,10 +30,12 @@ class LoginActivity : AppCompatActivity() {
             val password = fieldPassword.text.toString().trim()
 
             if (user.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Amobs campos son obligatorios", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ambos campos son obligatorios", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "User: $user PASS: $password", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this,MainActivity::class.java).apply {
+                    putExtra("USERNAME", user)
+                }
                 startActivity(intent)
             }
         }
