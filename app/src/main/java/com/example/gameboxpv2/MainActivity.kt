@@ -1,6 +1,7 @@
 package com.example.gameboxpv2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,7 +18,21 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val username = intent.getStringExtra("USERNAME")
 
+        if (savedInstanceState == null) {
+            val username = intent.getStringExtra("USERNAME")
+            Log.d("DATA_TRACE", "MainActivity recibió: $username")
+
+            val homeFragment = HomeFragment()
+
+            val bundle = Bundle()
+            bundle.putString("USERNAME_KEY", username)
+
+            homeFragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction()
+                .add(R.id.home_fragment_container, homeFragment)
+                .commit()
+        }
     }
 }
