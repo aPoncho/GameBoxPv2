@@ -1,66 +1,49 @@
 package com.example.gameboxpv2
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager // Importante
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val usernameTextView = view.findViewById<TextView>(R.id.textView_username)
-
-        val username = arguments?.getString("USERNAME_KEY")
-        Log.d("DATA_TRACE", "HomeFragment recibió: $username")
-
-        if (!username.isNullOrEmpty()) {
-            usernameTextView.text = username
-        } else {
-            usernameTextView.text = "Invitado"
-        }
-
-        // --- INICIO: CÓDIGO NUEVO PARA RECYCLERVIEW ---
-
-        // 1. Prepara tu lista de datos de ejemplo
+        // --- 1. Prepara tus datos de ejemplo ---
+        // (Asegúrate de tener estas imágenes en tu carpeta res/drawable)
         val popularGames = listOf(
-            Game("Mundo Gaturro", R.drawable.juego7), // Reemplaza con tus nombres de imagen
-            Game("CyberPunk 2077", R.drawable.juego1),
-            Game("Elden Ring", R.drawable.juego2)
+            Game("CyberPunk 2077", "Explora la vibrante y peligrosa Night City.", R.drawable.juego1),
+            Game("Elden Ring", "Un vasto mundo de fantasía te espera, Sinluz.", R.drawable.juego2),
+            Game("PEAK", "Descripción para el juego PEAK.", R.drawable.juego3)
         )
 
-        // Puedes crear otra lista para el otro RecyclerView
         val newReleaseGames = listOf(
-            Game("PEAK", R.drawable.juego3),
-            Game("Clair Obscure: Expedition 33", R.drawable.juego4),
-            Game("Resident Evil: Requiem", R.drawable.juego5)
+            Game("Clair Obscure", "Descripción para Clair Obscure.", R.drawable.juego4),
+            Game("Resident Evil", "Descripción para Resident Evil.", R.drawable.juego5),
+            Game("Mundo Gaturro", "El clásico juego online que marcó una generación.", R.drawable.juego7)
         )
 
-        // 2. Busca el RecyclerView en tu layout
+        // --- 2. Busca tus RecyclerViews en el layout ---
         val popularRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_popular)
         val newReleaseRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_nuevos_lanzamientos)
 
-        // 3. Configura el RecyclerView de Populares
-        popularRecyclerView.layoutManager = GridLayoutManager(context, 3) // 3 columnas
-        popularRecyclerView.adapter = GameAdapter(popularGames)
+        // --- 3. Configura el RecyclerView de Populares con su clic ---
+        popularRecyclerView.layoutManager = GridLayoutManager(context, 3)
+        popularRecyclerView.adapter = GameAdapter(popularGames) { selectedGame ->
+            // Al hacer clic, navega y envía el objeto del juego seleccionado
+            val action = HomeFragmentDirections.actionHomeFragmentToGameinfoFragment(selectedGame)
+            findNavController().navigate(action)
+        }
 
-        // 4. Configura el RecyclerView de Nuevos Lanzamientos
-        newReleaseRecyclerView.layoutManager = GridLayoutManager(context, 3) // 3 columnas
-        newReleaseRecyclerView.adapter = GameAdapter(newReleaseGames)
-
-
+        // --- 4. Configura el RecyclerView de Nuevos Lanzamientos con su clic ---
+        newReleaseRecyclerView.layoutManager = GridLayoutManager(context, 3)
+        newReleaseRecyclerView.adapter = GameAdapter(newReleaseGames) { selectedGame ->
+            // Hacemos lo mismo para la segunda lista
+            val action = HomeFragmentDirections.actionHomeFragmentToGameinfoFragment(selectedGame)
+            findNavController().navigate(action)
+        }
     }
 }
