@@ -35,6 +35,10 @@
         android:id="@+id/popularFragment"
         android:name="com.example.gameboxpv2.PopularFragment"
         android:label="fragment_popular"
-        tools:layout="@layout/fragment_popular" />
+        tools:layout="@layout/fragment_popular" >
+        <action
+            android:id="@+id/action_popularFragment_to_gameinfoFragment"
+            app:destination="@id/gameinfoFragment" />
+    </fragment>
 
 </navigation>

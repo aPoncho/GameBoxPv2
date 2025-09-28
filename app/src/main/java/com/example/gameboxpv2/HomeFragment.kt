@@ -15,15 +15,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // --- 1. Prepara tus datos de ejemplo ---
         // (Asegúrate de tener estas imágenes en tu carpeta res/drawable)
         val popularGames = listOf(
-            Game("CyberPunk 2077", "Explora la vibrante y peligrosa Night City.", R.drawable.juego1),
-            Game("Elden Ring", "Un vasto mundo de fantasía te espera, Sinluz.", R.drawable.juego2),
-            Game("PEAK", "Descripción para el juego PEAK.", R.drawable.juego3)
+            Game("CyberPunk 2077", "Cyberpunk 2077 es un RPG de aventura y acción de mundo abierto ambientado en el futuro sombrío de Night City, una peligrosa megalópolis obsesionada con el poder, el glamur y las incesantes modificaciones corporales.", R.drawable.juego1),
+            Game("Elden Ring", "EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA. Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.", R.drawable.juego2),
+            Game("PEAK", "PEAK es un juego cooperativo de escalada en el que un solo error puede ser fatal. Ya sea en solitario o en grupo, la única esperanza de salir de la misteriosa isla es subiendo hasta la cima de la montaña del centro. ¿Tenéis lo que hace falta para subir al PICO?", R.drawable.juego3)
         )
 
         val newReleaseGames = listOf(
-            Game("Clair Obscure", "Descripción para Clair Obscure.", R.drawable.juego4),
-            Game("Resident Evil", "Descripción para Resident Evil.", R.drawable.juego5),
-            Game("Mundo Gaturro", "El clásico juego online que marcó una generación.", R.drawable.juego7)
+            Game("Clair Obscure", "Guía a la expedición 33 en su viaje para destruir a la Peintresse para que no pinte la muerte. Explora un mundo inspirado por la Francia de la Belle Époque y combate enemigos únicos en este juego de rol por turnos con mecánicas en tiempo real.", R.drawable.juego4),
+            Game("Resident Evil Requiem", "Réquiem para los muertos. Pesadilla para los vivos.", R.drawable.juego5),
+            Game("Mundo Gaturro", "Mundo Gaturro es un videojuego multijugador masivo en línea (MMO), inspirado en el popular personaje de cómic Gaturro. Los jugadores controlaban avatares de gaturros (gatos antropomórficos) para interactuar con otros usuarios en un mundo virtual, disfrazar a sus personajes, jugar minijuegos, decorar casas y socializar en un entorno seguro con moderadores. ", R.drawable.juego7)
         )
 
         // --- 2. Busca tus RecyclerViews en el layout ---

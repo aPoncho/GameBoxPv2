@@ -1,168 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background_dark"
-    android:padding="16dp">
+    tools:context=".PopularFragment">
 
-
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="GameBoxP"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Populares de este mes"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <!-- Grid de juegos -->
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="1"
-        android:alignmentMode="alignMargins"
-        android:rowOrderPreserved="false"
-        android:useDefaultMargins="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Populares de este mes"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego1"
-            android:contentDescription="Juego 1"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/item_game_grid"
+                tools:itemCount="9"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego2"
-            android:contentDescription="Juego 2"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego3"
-            android:contentDescription="Juego 3"/>
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="1"
-        android:alignmentMode="alignMargins"
-        android:rowOrderPreserved="false"
-        android:useDefaultMargins="true">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego4"
-            android:contentDescription="Juego 4"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego5"
-            android:contentDescription="Juego 5"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego6"
-            android:contentDescription="Juego 6"/>
-
-    </GridLayout>
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="1"
-        android:alignmentMode="alignMargins"
-        android:rowOrderPreserved="false"
-        android:useDefaultMargins="true">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego7"
-            android:contentDescription="Juego 7"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego8"
-            android:contentDescription="Juego 8"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="185dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego9"
-            android:contentDescription="Juego 9"/>
-
-    </GridLayout>
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="1"
-        android:alignmentMode="alignMargins"
-        android:rowOrderPreserved="false"
-        android:useDefaultMargins="true">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego10"
-            android:contentDescription="Juego 10"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_columnWeight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego11"
-            android:contentDescription="Juego 11"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_row="0"
-            android:layout_column="2"
-            android:layout_columnWeight="1"
-            android:contentDescription="Juego 12"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego12" />
-
-    </GridLayout>
-
-</LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
