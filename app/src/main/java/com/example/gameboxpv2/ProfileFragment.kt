@@ -57,8 +57,8 @@ class ProfileFragment : Fragment() {
             return when (position) {
                 0 -> ProfileInfoFragment() // Primer pestaña
                 1 -> ErrorFragment() // TODO: agregar biblioteca
-                2 -> ErrorFragment() //TODO: agregar pestaña estadisticas
-                3 -> ErrorFragment() //TODO: agregar pestaña ajustes de perfil
+                2 -> StatisticsFragment() //TODO: agregar pestaña estadisticas
+                3 -> SettingsFragment() //TODO: agregar pestaña ajustes de perfil
                 else -> throw IllegalStateException("Posición de pestaña inválida: $position")
             }
         }
