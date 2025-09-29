@@ -43,6 +43,8 @@ class LoginActivity : AppCompatActivity() {
                     putExtra("USERNAME", user)
                     }
                     startActivity(intent)
+                } else {
+                    Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
