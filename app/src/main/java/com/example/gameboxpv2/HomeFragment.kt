@@ -27,11 +27,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Game("Mundo Gaturro", "Mundo Gaturro es un videojuego multijugador masivo en línea (MMO), inspirado en el popular personaje de cómic Gaturro. Los jugadores controlaban avatares de gaturros (gatos antropomórficos) para interactuar con otros usuarios en un mundo virtual, disfrazar a sus personajes, jugar minijuegos, decorar casas y socializar en un entorno seguro con moderadores. ", R.drawable.juego7, R.drawable.top6)
         )
 
-        // --- 2. Busca tus RecyclerViews en el layout ---
+        // Busca los RecyclerViews en el layout
         val popularRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_popular)
         val newReleaseRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_nuevos_lanzamientos)
 
-        // --- 3. Configura el RecyclerView de Populares con su clic ---
+        // Configura el RecyclerView de Populares con su clic
         popularRecyclerView.layoutManager = GridLayoutManager(context, 3)
         popularRecyclerView.adapter = GameAdapter(popularGames) { selectedGame ->
             // Al hacer clic, navega y envía el objeto del juego seleccionado
@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             findNavController().navigate(action)
         }
 
-        // --- 4. Configura el RecyclerView de Nuevos Lanzamientos con su clic ---
+        // Configura el RecyclerView de Nuevos Lanzamientos con su clic
         newReleaseRecyclerView.layoutManager = GridLayoutManager(context, 3)
         newReleaseRecyclerView.adapter = GameAdapter(newReleaseGames) { selectedGame ->
             // Hacemos lo mismo para la segunda lista

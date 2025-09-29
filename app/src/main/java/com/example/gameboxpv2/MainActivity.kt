@@ -11,16 +11,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. Encuentra el NavController desde el NavHostFragment en tu layout.
+        //Encuentra el NavController desde el NavHostFragment en tu layout.
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // 2. Encuentra tu BottomNavigationView.
+        //Encuentra tu BottomNavigationView.
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // 3. Conecta la barra de navegación con el NavController.
-        // Esta línea se encarga de manejar los clics y cambiar de fragmento automáticamente.
+        // Conecta la barra de navegación con el NavController.
         bottomNavigationView.setupWithNavController(navController)
     }
 }

@@ -42,7 +42,6 @@ class ProfileFragment : Fragment() {
                 0 -> "Perfil"
                 1 -> "Mis Juegos"
                 2 -> "Estadisticas"
-                3 -> "Ajustes"
                 else -> null
             }
         }.attach()
@@ -50,7 +49,7 @@ class ProfileFragment : Fragment() {
     class ProfileSectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
         override fun getItemCount(): Int {
-            return 4 // Número de pestañas
+            return 3 // Número de pestañas
         }
 
         override fun createFragment(position: Int): Fragment {
@@ -58,7 +57,6 @@ class ProfileFragment : Fragment() {
                 0 -> ProfileInfoFragment() // Primer pestaña
                 1 -> ErrorFragment() // TODO: agregar biblioteca
                 2 -> StatisticsFragment() //TODO: agregar pestaña estadisticas
-                3 -> SettingsFragment() //TODO: agregar pestaña ajustes de perfil
                 else -> throw IllegalStateException("Posición de pestaña inválida: $position")
             }
         }
