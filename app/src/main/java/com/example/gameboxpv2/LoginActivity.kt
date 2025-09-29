@@ -29,14 +29,23 @@ class LoginActivity : AppCompatActivity() {
             val user = fieldUser.text.toString().trim()
             val password = fieldPassword.text.toString().trim()
 
+            val validUser : String = "admin"
+
             if (user.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Ambos campos son obligatorios", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "User: $user PASS: $password", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this,MainActivity::class.java).apply {
+            }
+            if (user == validUser){
+                val validPassword : String = "admin123"
+
+                if (password == validPassword) {
+                    Toast.makeText(this, "User: $user PASS: $password", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this,MainActivity::class.java).apply {
                     putExtra("USERNAME", user)
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
         }
     }
