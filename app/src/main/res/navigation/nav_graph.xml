@@ -23,13 +23,21 @@
         <argument
             android:name="selected_game"
             app:argType="com.example.gameboxpv2.Game" />
+        <action
+            android:id="@+id/action_gameinfoFragment_pop"
+            app:popUpTo="@id/gameinfoFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.gameboxpv2.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_errorFragment_to_addGameFragment"
+            app:destination="@id/addgameFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/popularFragment"
@@ -46,4 +54,16 @@
         android:name="com.example.gameboxpv2.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="com.example.gameboxpv2.ErrorFragment"
+        android:label="fragment_error"
+        tools:layout="@layout/fragment_error" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/addgameFragment"
+        android:name="com.example.gameboxpv2.AddgameFragment"
+        android:label="fragment_addgame"
+        tools:layout="@layout/fragment_addgame" />
 </navigation>
