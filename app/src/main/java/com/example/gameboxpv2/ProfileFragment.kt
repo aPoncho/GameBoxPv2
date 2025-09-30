@@ -14,13 +14,12 @@ class ProfileFragment : Fragment() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-    private lateinit var pagerAdapter: ProfileSectionsPagerAdapter // Declara el adaptador
+    private lateinit var pagerAdapter: ProfileSectionsPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -30,14 +29,11 @@ class ProfileFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tab_layout_profile)
         viewPager = view.findViewById(R.id.view_pager_profile)
 
-        // Inicializa el adaptador PASANDO 'this' (ProfileFragment)
-        // porque el ViewPager2 está DENTRO de este fragmento.
+
         pagerAdapter = ProfileSectionsPagerAdapter(this)
         viewPager.adapter = pagerAdapter
 
-        // Vincula el TabLayout con el ViewPager2
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            // Aquí configuras el texto (o icono) de cada pestaña
             tab.text = when (position) {
                 0 -> "Perfil"
                 1 -> "Mis Juegos"
@@ -49,7 +45,7 @@ class ProfileFragment : Fragment() {
     class ProfileSectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
         override fun getItemCount(): Int {
-            return 3 // Número de pestañas
+            return 3
         }
 
         override fun createFragment(position: Int): Fragment {

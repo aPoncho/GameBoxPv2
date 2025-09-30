@@ -32,10 +32,8 @@ class GameAdapter(
         holder.coverImageView.setImageResource(game.coverImage)
         holder.titleTextView.text = game.title
 
-        // 👇 CAMBIO 2: Configura el listener para el clic
-        // Esto hace que todo el item sea clicleable
+
         holder.itemView.setOnClickListener {
-            // Cuando se hace clic, se ejecuta la función que nos pasaron
             onGameClicked(game)
         }
     }
