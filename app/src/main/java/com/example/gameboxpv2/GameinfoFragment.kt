@@ -9,13 +9,11 @@ import androidx.navigation.fragment.navArgs
 
 class GameinfoFragment : Fragment(R.layout.fragment_gameinfo) {
 
-    // Recibe los argumentos (el objeto Game) de forma segura.
     private val args: GameinfoFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Obtiene el juego que fue enviado.
         val selectedGame = args.selectedGame
 
         val gameBannerView = view.findViewById<ImageView>(R.id.game_banner_placeholder)
@@ -23,7 +21,6 @@ class GameinfoFragment : Fragment(R.layout.fragment_gameinfo) {
         val gameTitleView = view.findViewById<TextView>(R.id.game_title)
         val gameDescriptionView = view.findViewById<TextView>(R.id.game_synopsis)
 
-        //Asigna la información del juego a las vistas.
         gameBannerView.setImageResource(selectedGame.bannerImage)
         gameImageView.setImageResource(selectedGame.coverImage)
         gameTitleView.text = selectedGame.title

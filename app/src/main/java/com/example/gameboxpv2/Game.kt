@@ -9,5 +9,5 @@ data class Game(
     val title: String,
     val description: String,
     @DrawableRes val coverImage: Int,
-    @DrawableRes val bannerImage: Int // Nueva propiedad para la imagen del banner
+    @DrawableRes val bannerImage: Int
 ) : Parcelable

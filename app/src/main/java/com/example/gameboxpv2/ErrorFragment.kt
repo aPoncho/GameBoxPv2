@@ -9,7 +9,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -40,15 +39,11 @@ class ErrorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState) // Siempre llama al método de la superclase primero
+        super.onViewCreated(view, savedInstanceState)
 
-        // 1. Encuentra el FloatingActionButton usando su ID del layout fragment_error.xml
-        //    'view' es la vista raíz inflada de tu fragmento (devuelta por onCreateView)
         val fabAddGame: FloatingActionButton? = view.findViewById(R.id.fab_add_game)
 
-        // 2. Configura el OnClickListener para el FAB
         fabAddGame?.setOnClickListener {
-            // Navega al AddGameFragment.
             findNavController().navigate(R.id.action_errorFragment_to_addGameFragment)
         }
     }

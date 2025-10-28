@@ -12,7 +12,6 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Prepara tus datos de ejemplo para los juegos populares.
         val popularGames = listOf(
             Game("CyberPunk 2077", "Cyberpunk 2077 es un RPG de aventura y acción de mundo abierto ambientado en el futuro sombrío de Night City, una peligrosa megalópolis obsesionada con el poder, el glamur y las incesantes modificaciones corporales.", R.drawable.juego1, R.drawable.top1),
             Game("Elden Ring", "EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA. Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.", R.drawable.juego2, R.drawable.top2),
@@ -29,13 +28,10 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
                     "Disfruta de una experiencia visual impresionante gracias a sus gráficos 3D de primer nivel, y vive la emoción de las competencias mientras llevas a tu equipo a la victoria.", R.drawable.juego9, R.drawable.top)
         )
 
-        // 2. Busca el RecyclerView en el layout.
         val popularRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_popular)
 
-        // 3. Configura el RecyclerView con el adaptador y el listener de clic.
         popularRecyclerView.layoutManager = GridLayoutManager(context, 3)
         popularRecyclerView.adapter = GameAdapter(popularGames) { selectedGame ->
-            // Al hacer clic, navega y envía el objeto del juego seleccionado.
             val action = PopularFragmentDirections.actionPopularFragmentToGameinfoFragment(selectedGame)
             findNavController().navigate(action)
         }
