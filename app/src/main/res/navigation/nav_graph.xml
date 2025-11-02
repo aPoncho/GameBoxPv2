@@ -66,4 +66,10 @@
         android:name="com.example.gameboxpv2.AddgameFragment"
         android:label="fragment_addgame"
         tools:layout="@layout/fragment_addgame" />
+
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.example.gameboxpv2.ui.games.GamesFragment"
+        android:label="Juegos"
+        tools:layout="@layout/fragment_games" />
 </navigation>
