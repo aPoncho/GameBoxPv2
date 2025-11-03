@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/addgameFragment"
-        android:name="com.example.gameboxpv2.AddgameFragment"
+        android:name="com.example.gameboxpv2.ui.games.AddgameFragment"
         android:label="fragment_addgame"
         tools:layout="@layout/fragment_addgame" />
 
