@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "652007342437",
+    "project_id": "gameboxp-f2f0a",
+    "storage_bucket": "gameboxp-f2f0a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652007342437:android:50cd744c44c98e81d3e18c",
+        "android_client_info": {
+          "package_name": "com.example.gameboxpv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA23ZcRL_qUVJj_gpZb1xSUWujT-Ar-waA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
