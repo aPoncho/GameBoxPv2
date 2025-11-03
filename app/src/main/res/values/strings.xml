@@ -16,4 +16,9 @@
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cd_game_cover">Portada del juego</string>
+    <string name="action_add">Añadir</string>
+    <string name="placeholder_game_title">Nombre del juego</string>
+    <string name="placeholder_platform">PC</string>
+
 </resources>

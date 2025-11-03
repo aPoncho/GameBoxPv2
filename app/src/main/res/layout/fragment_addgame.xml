@@ -1,150 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_dark"
-    android:padding="16dp"
-    tools:context=".ui.addgame.AddgameFragment">
+    android:background="@color/black"
+    android:padding="16dp">
 
+    <!-- Título (si lo quieres, si no, bórralo) -->
     <TextView
-        android:id="@+id/textView_add_game_title"
+        android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir Juego"
+        android:text="Añadir juego"
+        android:textSize="22sp"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="12dp" />
 
-    <RelativeLayout
+    <!-- Buscador -->
+    <EditText
+        android:id="@+id/etSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp">
+        android:layout_height="48dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="Buscar juego por nombre..."
+        android:paddingHorizontal="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#88FFFFFF"
+        android:layout_marginBottom="12dp" />
 
-        <EditText
-            android:id="@+id/editText_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_light"
-            android:hint="Buscar juego por nombre..."
-            android:textColorHint="@color/text_gray"
-            android:textColor="@android:color/white"
-            android:paddingStart="18dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:inputType="text"/>
-
-    </RelativeLayout>
-
+    <!-- Texto "Resultados" -->
     <TextView
+        android:id="@+id/txtResultsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Resultados"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp" />
 
-    <RelativeLayout
+    <!-- Lista de resultados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvResults"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 
-        <ImageView
-            android:id="@+id/image_game_cover_1"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego1"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:contentDescription="Portada del juego"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/image_game_cover_1"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cyberpunk 2077"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Playstation5"
-                android:textColor="@color/text_gray"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir"
-            android:backgroundTint="@color/green_accent"
-            android:textColor="@android:color/white"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <ImageView
-            android:id="@+id/image_game_cover_2"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/juego11"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:contentDescription="Portada del juego"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/image_game_cover_2"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="APEWAR III"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PC"
-                android:textColor="@color/text_gray"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir"
-            android:backgroundTint="@color/green_accent"
-            android:textColor="@android:color/white"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
 </LinearLayout>

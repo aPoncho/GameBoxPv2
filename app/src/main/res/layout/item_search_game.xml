@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:padding="8dp"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/imgCover"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/cd_game_cover"
+        tools:src="@drawable/ic_videogame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        tools:text="@string/placeholder_game_title"
+        app:layout_constraintStart_toEndOf="@id/imgCover"
+        app:layout_constraintTop_toTopOf="@id/imgCover"
+        app:layout_constraintEnd_toStartOf="@id/btnAdd" />
+
+    <TextView
+        android:id="@+id/txtPlatform"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#AAFFFFFF"
+        tools:text="@string/placeholder_platform"
+        app:layout_constraintStart_toStartOf="@id/txtName"
+        app:layout_constraintTop_toBottomOf="@id/txtName"
+        app:layout_constraintEnd_toStartOf="@id/btnAdd" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:text="@string/action_add"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
