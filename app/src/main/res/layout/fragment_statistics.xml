@@ -144,6 +144,7 @@
                     android:layout_centerVertical="true"/>
 
                 <TextView
+                    android:id="@+id/tv_platform_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PC"
