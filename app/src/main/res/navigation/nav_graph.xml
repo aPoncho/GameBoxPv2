@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_gameinfo" >
         <argument
             android:name="selected_game"
-            app:argType="com.example.gameboxpv2.Game" />
+            app:argType="com.example.gameboxpv2.data.model.Game" />
         <action
             android:id="@+id/action_gameinfoFragment_pop"
             app:popUpTo="@id/gameinfoFragment"

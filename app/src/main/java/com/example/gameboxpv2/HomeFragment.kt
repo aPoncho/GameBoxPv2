@@ -1,11 +1,13 @@
 package com.example.gameboxpv2
 
+import android.content.ContentResolver
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gameboxpv2.data.model.Game
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -13,16 +15,65 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         val popularGames = listOf(
-            Game("CyberPunk 2077", "Cyberpunk 2077 es un RPG de aventura y acción de mundo abierto ambientado en el futuro sombrío de Night City, una peligrosa megalópolis obsesionada con el poder, el glamur y las incesantes modificaciones corporales.", R.drawable.juego1, R.drawable.top1),
-            Game("Elden Ring", "EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA. Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.", R.drawable.juego2, R.drawable.top2),
-            Game("PEAK", "PEAK es un juego cooperativo de escalada en el que un solo error puede ser fatal. Ya sea en solitario o en grupo, la única esperanza de salir de la misteriosa isla es subiendo hasta la cima de la montaña del centro. ¿Tenéis lo que hace falta para subir al PICO?", R.drawable.juego3, R.drawable.top3)
+            Game(
+                title = "CyberPunk 2077",
+                // ase usa la función para convertir el ID del drawable en una URL
+                coverImageUrl = resourceToUri(R.drawable.juego1),
+                platform = "PC, PS5, Xbox Series X/S",
+                rating = 4.5f,
+                releaseYear = 2020,
+                status = "Jugado",
+                // Usamos el texto que tenías como descripción para las notas
+                notes = "Cyberpunk 2077 es un RPG de aventura y acción de mundo abierto ambientado en el futuro sombrío de Night City..."
+            ),
+            Game(
+                title = "Elden Ring",
+                coverImageUrl = resourceToUri(R.drawable.juego2),
+                platform = "PC, PS5, Xbox Series X/S",
+                rating = 4.9f,
+                releaseYear = 2022,
+                status = "Completado",
+                notes = "EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA. Álzate, Sinluz, y que la gracia te guíe..."
+            ),
+            Game(
+                title = "PEAK",
+                coverImageUrl = resourceToUri(R.drawable.juego3),
+                platform = "PC",
+                rating = 4.2f,
+                releaseYear = 2024,
+                status = "Jugando",
+                notes = "PEAK es un juego cooperativo de escalada en el que un solo error puede ser fatal..."
+            )
         )
 
-
         val newReleaseGames = listOf(
-            Game("Clair Obscure", "Guía a la expedición 33 en su viaje para destruir a la Peintresse para que no pinte la muerte. Explora un mundo inspirado por la Francia de la Belle Époque y combate enemigos únicos en este juego de rol por turnos con mecánicas en tiempo real.", R.drawable.juego4, R.drawable.top4),
-            Game("Resident Evil", "Réquiem para los muertos. Pesadilla para los vivos.", R.drawable.juego5, R.drawable.top5),
-            Game("Mundo Gaturro", "Mundo Gaturro es un videojuego multijugador masivo en línea (MMO), inspirado en el popular personaje de cómic Gaturro. Los jugadores controlaban avatares de gaturros (gatos antropomórficos) para interactuar con otros usuarios en un mundo virtual, disfrazar a sus personajes, jugar minijuegos, decorar casas y socializar en un entorno seguro con moderadores. ", R.drawable.juego7, R.drawable.top6)
+            Game(
+                title = "Clair Obscure",
+                coverImageUrl = resourceToUri(R.drawable.juego4),
+                platform = "PC, PS5, Xbox Series X/S",
+                rating = 0f, // Aún no ha salido
+                releaseYear = 2025,
+                status = "Pendiente",
+                notes = "Guía a la expedición 33 en su viaje para destruir a la Peintresse para que no pinte la muerte..."
+            ),
+            Game(
+                title = "Resident Evil",
+                coverImageUrl = resourceToUri(R.drawable.juego5),
+                platform = "Multiplataforma",
+                rating = 4.8f,
+                releaseYear = 1996, // El original
+                status = "Clásico",
+                notes = "Réquiem para los muertos. Pesadilla para los vivos."
+            ),
+            Game(
+                title = "Mundo Gaturro",
+                coverImageUrl = resourceToUri(R.drawable.juego7),
+                platform = "Web",
+                rating = 3.5f,
+                releaseYear = 2010,
+                status = "Archivado",
+                notes = "Mundo Gaturro es un videojuego multijugador masivo en línea (MMO)..."
+            )
         )
 
         val popularRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_popular)
@@ -40,5 +91,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToGameinfoFragment(selectedGame)
             findNavController().navigate(action)
         }
+    }
+    // Función auxiliar para convertir un ID de recurso drawable en una URL de String
+    // que Coil pueda entender.
+    private fun resourceToUri(resourceId: Int): String {
+        val context = requireContext()
+        return "${ContentResolver.SCHEME_ANDROID_RESOURCE}://${context.packageName}/$resourceId"
     }
 }

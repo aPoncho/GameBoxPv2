@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
+import coil.load
 
 class GameinfoFragment : Fragment(R.layout.fragment_gameinfo) {
 
@@ -21,9 +22,23 @@ class GameinfoFragment : Fragment(R.layout.fragment_gameinfo) {
         val gameTitleView = view.findViewById<TextView>(R.id.game_title)
         val gameDescriptionView = view.findViewById<TextView>(R.id.game_synopsis)
 
-        gameBannerView.setImageResource(selectedGame.bannerImage)
-        gameImageView.setImageResource(selectedGame.coverImage)
+        gameBannerView.load(selectedGame.coverImageUrl) {
+            crossfade(true)
+            placeholder(R.drawable.ic_placeholder) // Opcional
+        }
+        gameImageView.load(selectedGame.coverImageUrl) {
+            crossfade(true)
+            placeholder(R.drawable.ic_placeholder) // Opcional
+        }
         gameTitleView.text = selectedGame.title
-        gameDescriptionView.text = selectedGame.description
+        val descriptionText = """
+            Plataforma: ${selectedGame.platform}
+            Año: ${selectedGame.releaseYear}
+            Rating: ${selectedGame.rating} / 5
+            Estado: ${selectedGame.status}
+            Notas: ${selectedGame.notes}
+        """.trimIndent()
+
+        gameDescriptionView.text = descriptionText
     }
 }

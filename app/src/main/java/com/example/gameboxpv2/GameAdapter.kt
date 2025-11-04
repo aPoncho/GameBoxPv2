@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gameboxpv2.data.model.Game
+import coil.load // Importante importar la función de Coil
 
 //                                      👇 CAMBIO 1: Añade el parámetro para el clic
 class GameAdapter(
@@ -29,7 +31,11 @@ class GameAdapter(
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = gameList[position]
-        holder.coverImageView.setImageResource(game.coverImage)
+        holder.coverImageView.load(game.coverImageUrl) {
+            crossfade(true) // Animación suave
+            placeholder(R.drawable.ic_placeholder) // Imagen a mostrar mientras carga
+            error(R.drawable.ic_error_placeholder) // Imagen si falla la carga
+        }
         holder.titleTextView.text = game.title
 
 

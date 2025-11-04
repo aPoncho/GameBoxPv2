@@ -1,36 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<!-- Usar un ConstraintLayout da más flexibilidad para posicionar
+     elementos como un indicador de carga sin usar layouts anidados. -->
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/black"
-    android:padding="16dp">
+    tools:context=".AddGameFragment">
 
-    <!-- Título (si lo quieres, si no, bórralo) -->
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Añadir juego"
-        android:textSize="22sp"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Buscador -->
-    <EditText
-        android:id="@+id/etSearch"
+    <!-- He movido el padding aquí para que el RecyclerView pueda
+         extenderse a los bordes si es necesario, lo que es visualmente más atractivo. -->
+    <LinearLayout
+        android:id="@+id/search_container"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/bg_edittext"
-        android:hint="Buscar juego por nombre..."
-        android:paddingHorizontal="12dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="#88FFFFFF"
-        android:layout_marginBottom="12dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Texto "Resultados" -->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir juego"
+            android:textSize="22sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Usar un TextInputLayout es una buena práctica:
+             - Gestiona el 'hint' de forma más elegante.
+             - Permite añadir un ícono de 'buscar' al inicio. -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@android:color/white"
+            app:hintEnabled="false"> <!-- Desactivamos el hint flotante para un look más limpio -->
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:hint="Buscar juego por nombre..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingVertical="14dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="#88FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/txtResultsTitle"
         android:layout_width="wrap_content"
@@ -39,15 +67,54 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/search_container"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Lista de resultados -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvResults"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_marginTop="12dp"
         android:clipToPadding="false"
-        android:paddingBottom="8dp" />
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txtResultsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <!-- SUGERENCIA 1: Indicador de Carga (ProgressBar) -->
+    <!-- Estará centrado y oculto por defecto. Lo harás visible desde el código cuando inicie una búsqueda. -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" /> <!-- tools:visibility hace que lo veas en el editor, pero estará 'gone' en la app -->
+
+    <!-- SUGERENCIA 2: Mensaje de "No se encontraron resultados" -->
+    <!-- También oculto por defecto. Lo mostrarás cuando la búsqueda termine sin resultados. -->
+    <TextView
+        android:id="@+id/txtEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No se encontraron resultados"
+        android:textColor="#AFFFFFFF"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:drawableTopCompat="@drawable/ic_no_results"
+        app:drawableTint="#AFFFFFFF"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

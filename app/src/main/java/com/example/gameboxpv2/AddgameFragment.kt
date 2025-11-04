@@ -36,7 +36,7 @@ class AddgameFragment : Fragment() {
 
         adapter = RawgSearchAdapter(onAddClick = { game ->
             vm.addToMyGames(game)  // 👈 guarda en “Mis Juegos”
-            Toast.makeText(requireContext(), "Añadido: ${game.name}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Añadido: ${game.name}", Toast.LENGTH_SHORT).show()
         })
 
         binding.rvResults.layoutManager = LinearLayoutManager(requireContext())
@@ -49,6 +49,13 @@ class AddgameFragment : Fragment() {
         vm.error.observe(viewLifecycleOwner) { msg ->
             if (!msg.isNullOrBlank()) {
                 Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        vm.saveStatus.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandled()?.let { message ->
+                // Muestra el mensaje que viene del ViewModel.
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
         }
 
