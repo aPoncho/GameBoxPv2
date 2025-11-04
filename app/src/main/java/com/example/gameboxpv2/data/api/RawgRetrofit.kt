@@ -1,10 +1,8 @@
 package com.example.gameboxpv2.data.api
 
 import com.example.gameboxpv2.BuildConfig
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -12,23 +10,25 @@ object RawgRetrofit {
 
     private const val BASE_URL = "https://api.rawg.io/api/"
 
-    // agrega ?key=TU_KEY a todas las requests
-    private val apiKeyInterceptor = Interceptor { chain ->
-        val original = chain.request()
-        val newUrl = original.url.newBuilder()
-            .addQueryParameter("key", BuildConfig.RAWG_API_KEY)
-            .build()
-        val newReq = original.newBuilder().url(newUrl).build()
-        chain.proceed(newReq)
-    }
-
-    private val logger = HttpLoggingInterceptor().apply {
+    // --- PASO 1: Define el interceptor de logs ---
+    // Solo necesitamos uno. Imprimirá el cuerpo de la petición.
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+    // --- PASO 2: Construye el cliente HTTP añadiendo los interceptores por separado ---
     private val client = OkHttpClient.Builder()
-        .addInterceptor(apiKeyInterceptor)
-        .addInterceptor(logger)
+        // Interceptor 1: Añade la API Key a cada llamada
+        .addInterceptor { chain ->
+            val originalRequest = chain.request()
+            val urlWithApiKey = originalRequest.url.newBuilder()
+                .addQueryParameter("key", BuildConfig.RAWG_API_KEY)
+                .build()
+            val newRequest = originalRequest.newBuilder().url(urlWithApiKey).build()
+            chain.proceed(newRequest)
+        }
+        // Interceptor 2: Añade el logger de red para poder depurar en Logcat
+        .addInterceptor(loggingInterceptor)
         .build()
 
     val api: RawgService by lazy {

@@ -8,27 +8,33 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.gameboxpv2.R
-import com.example.gameboxpv2.data.remote.rawg.RawgGameDto
+// --- CORRECCIÓN 1: Importa tu modelo 'Game' de la base de datos ---
+import com.example.gameboxpv2.data.model.Game
 
+// --- CORRECCIÓN 2: El adapter ahora trabaja con objetos 'Game' ---
 class MyGamesAdapter(
-    private val onGameClicked: (RawgGameDto) -> Unit = {}
+    private val onGameClicked: (Game) -> Unit = {}
 ) : RecyclerView.Adapter<MyGamesAdapter.VH>() {
 
-    private val items = mutableListOf<RawgGameDto>()
+    // --- CORRECCIÓN 3: La lista interna almacena objetos 'Game' ---
+    private val items = mutableListOf<Game>()
 
-    fun submitList(newItems: List<RawgGameDto>) {
+    // --- CORRECCIÓN 4: La función submitList espera una lista de 'Game' ---
+    fun submitList(newItems: List<Game>) {
         items.clear()
         items.addAll(newItems)
-        notifyDataSetChanged()
+        notifyDataSetChanged() // Considera usar DiffUtil para mejor rendimiento en el futuro
     }
 
     inner class VH(view: View) : RecyclerView.ViewHolder(view) {
         private val img: ImageView = view.findViewById(R.id.imageView_game_cover)
         private val title: TextView = view.findViewById(R.id.textView_game_title)
 
-        fun bind(g: RawgGameDto) {
-            title.text = g.name
-            img.load(g.backgroundImage) { crossfade(true) }
+        // --- CORRECCIÓN 5: La función bind recibe un objeto 'Game' ---
+        fun bind(g: Game) {
+            // --- CORRECCIÓN 6: Usa las propiedades del objeto 'Game' ---
+            title.text = g.title
+            img.load(g.coverImageUrl) { crossfade(true) }
             itemView.setOnClickListener { onGameClicked(g) }
         }
     }
@@ -43,3 +49,4 @@ class MyGamesAdapter(
 
     override fun getItemCount(): Int = items.size
 }
+

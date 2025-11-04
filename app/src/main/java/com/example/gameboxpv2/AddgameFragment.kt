@@ -35,20 +35,22 @@ class AddgameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = RawgSearchAdapter(onAddClick = { game ->
-            vm.addToMyGames(game)  // 👈 guarda en “Mis Juegos”
+            vm.addToMyGames(game)
             //Toast.makeText(requireContext(), "Añadido: ${game.name}", Toast.LENGTH_SHORT).show()
         })
 
         binding.rvResults.layoutManager = LinearLayoutManager(requireContext())
         binding.rvResults.adapter = adapter
 
-        vm.games.observe(viewLifecycleOwner) { list ->
+        vm.searchResults.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
         }
 
-        vm.error.observe(viewLifecycleOwner) { msg ->
-            if (!msg.isNullOrBlank()) {
-                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        vm.apiError.observe(viewLifecycleOwner) { event ->
+            // 1. Usamos getContentIfNotHandled() para obtener el String de dentro del Event.
+            event.getContentIfNotHandled()?.let { message ->
+                // 2. 'message' ahora sí es un String. Podemos mostrarlo directamente.
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
         }
 

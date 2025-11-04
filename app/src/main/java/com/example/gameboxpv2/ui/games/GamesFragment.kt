@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels // <-- CORRECCIÓN 1: Usa 'activityViewModels'
+import com.example.gameboxpv2.data.model.Game // <-- CORRECCIÓN 2: Importa tu modelo 'Game'
 import com.example.gameboxpv2.databinding.FragmentGamesBinding
 
 class GamesFragment : Fragment() {
@@ -14,7 +15,8 @@ class GamesFragment : Fragment() {
     private var _binding: FragmentGamesBinding? = null
     private val binding get() = _binding!!
 
-    private val vm: GamesViewModel by viewModels()  // 👈 este, no el otro
+    // Usamos 'activityViewModels' para compartir la instancia del ViewModel con otros fragmentos
+    private val vm: GamesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,19 +29,28 @@ class GamesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // --- CORRECCIÓN 3: El botón ahora actualiza la lista ---
+        // La función `loadUserGames()` ya se llama automáticamente cuando el usuario
+        // inicia sesión, pero podemos dejar este botón para una recarga manual si quieres.
         binding.btnLoadGames.setOnClickListener {
-            vm.loadExampleGames()
+            vm.loadUserGames()
+            Toast.makeText(requireContext(), "Actualizando lista...", Toast.LENGTH_SHORT).show()
         }
 
-        vm.games.observe(viewLifecycleOwner) { list ->
+        // Este LiveData contiene la lista de juegos guardados en Firestore.
+        vm.userGames.observe(viewLifecycleOwner) { list: List<Game> ->
+            // Adaptamos el texto para que use las propiedades del objeto 'Game'
             binding.txtResult.text = list.joinToString("\n") { g ->
-                "• ${g.name} (${g.released ?: "N/D"}) ⭐ ${g.rating ?: 0.0}"
+                "• ${g.title} (${g.releaseYear}) ⭐ ${g.rating}"
             }
         }
 
-        vm.error.observe(viewLifecycleOwner) { msg ->
-            if (!msg.isNullOrBlank()) {
-                Toast.makeText(requireContext(), msg.take(200), Toast.LENGTH_SHORT).show()
+
+        vm.saveStatus.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandled()?.let { message ->
+                if (message.startsWith("Error")) {
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

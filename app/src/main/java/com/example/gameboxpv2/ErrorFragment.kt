@@ -35,7 +35,7 @@ class ErrorFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
 
-        vm.myGames.observe(viewLifecycleOwner) { list ->
+        vm.userGames.observe(viewLifecycleOwner) { list ->
             if (list.isNullOrEmpty()) {
                 emptyState.visibility = View.VISIBLE
                 rv.visibility = View.GONE

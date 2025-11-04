@@ -1,9 +1,18 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.google.gms.google-services")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
 }
 
 android {
@@ -19,11 +28,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField(
-            "String",
-            "RAWG_API_KEY",
-            "\"5ce3149fcffb494d973e72eafe545b41\""
-        )
+        //buildConfigField(
+          //  "String",
+            //"RAWG_API_KEY",
+           // "\"195eec7cc1324d5dbfcd6b47c4af9852\"" //5ce3149fcffb494d973e72eafe545b41
+        //)
     }
 
     buildFeatures {
@@ -37,6 +46,19 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+            buildConfigField(
+                "String",
+                "RAWG_API_KEY",
+                "\"${localProperties.getProperty("RAWG_API_KEY") ?: ""}\""
+            )
+        }
+        debug {
+            // Esto asegura que la clave esté disponible cuando se ejecuta la app
+            buildConfigField(
+                "String",
+                "RAWG_API_KEY",
+                "\"${localProperties.getProperty("RAWG_API_KEY") ?: ""}\""
             )
         }
     }
